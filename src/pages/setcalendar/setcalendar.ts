@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Calendar } from '@ionic-native/calendar';
-import { LessonProvider } from '../../providers/lesson/lesson';
+import { LessonProvider,  } from '../../providers/lesson/lesson';
+import { NoteProvider} from '../../providers/note/note'
 /**
  * Generated class for the SetcalendarPage page.
  *
@@ -24,10 +25,11 @@ export class SetcalendarPage {
   public note = {
     title: '',
     location: '',
-    startDate: '01/02/2018',
-    startTime: this.y,
-    endDate: this.z,
-    endTime: '05/06/2018',
+    startDate: '',
+    startTime: '',
+    endDate: '',
+    endTime: '',
+    repeat: '',
     notes: ''
   }
   eventSource = [];
@@ -38,7 +40,9 @@ export class SetcalendarPage {
     public alert: AlertController,
     private localNotification: LocalNotifications,
     private calendar: Calendar,
+    public toastCtrl: ToastController,
     public lessonProvider: LessonProvider,
+    public noteProvider: NoteProvider
    ) {
   }
 
@@ -73,6 +77,7 @@ export class SetcalendarPage {
     ); 
   }
   public getCalender() {
+    if (this.note.startDate != '' && this.note.startTime != '' && this.note.endDate !=null && this.note.endTime != '' ){
     var startDateTimeISO = this.buildISODate(this.note.startDate, this.note.startTime);
     var enddateTimeISO = this.buildISODate(this.note.endDate, this.note.endTime);
         	
@@ -89,6 +94,26 @@ export class SetcalendarPage {
         mydata: "My notification"
       }
     });
+    var noteCreate = {
+      title: this.note.title,
+      location: this.note.location,
+      startDate: this.note.startDate,
+      startTime: this.note.startTime,
+      endDate: this.note.endDate,
+      endTime: this.note.endTime,
+      repeat: this.note.repeat,
+    }
+    this.noteProvider.createNote(noteCreate).then(
+      (note) =>{ console.log(note)}
+    )
+    .catch((err) => {
+      var message = err.error;
+      this.showToast(message);
+    });
+  }
+  else{
+    this.showToast("Date and Time must not be null");
+  }
  }
 
  buildISODate(date, time){
@@ -96,5 +121,13 @@ export class SetcalendarPage {
     var timeArray = time && time.split(':');
     var normalDate = new Date(parseInt(dateArray[0]), parseInt(dateArray[1])-1, parseInt(dateArray[2]), parseInt(timeArray[0]), parseInt(timeArray[1]), 0, 0);
     return normalDate.toISOString();
+}
+showToast(msg) {
+  let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'top',
+  });
+  toast.present();
 }
 }

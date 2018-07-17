@@ -21,6 +21,7 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Calendar } from '@ionic-native/calendar';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { NoteProvider } from '../providers/note/note';
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
@@ -57,6 +58,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     LessonProvider,
+    NoteProvider,
   ]
 })
 export class AppModule {}

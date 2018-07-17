@@ -65,12 +65,12 @@ getUsers() {
 }
 
 showToast(msg) {
-    let toast = this.toastCtrl.create({
-        message: msg,
-        duration: 2000,
-        position: 'top',
-    });
-    toast.present();
+  let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'top',
+  });
+  toast.present();
 }
   ionViewWillLeave() {
     this.socket.disconnect();

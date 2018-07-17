@@ -1,0 +1,50 @@
+<!--
+  Generated template for the SchedulePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Schedule
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addSchedule()" *ngIf="isInPast && !existEvent">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="content">
+      <div class="row">
+        <button ion-button outline icon-only class="btn-left-right" (click)="prevMonth()">
+          <ion-icon name="arrow-dropleft-circle"></ion-icon>
+        </button>
+        <div id="month">{{monthInYear}}</div>
+        <div id="year">{{year}}</div>
+        <button ion-button outline icon-only class="btn-left-right" (click)="nextMonth()">
+          <ion-icon name="arrow-dropright-circle"></ion-icon>
+        </button>
+      </div>
+      <div class="week">
+        <div class="weekItem" *ngFor="let day of weekDay">{{day}}</div>
+      </div>
+      <div class="weekContainer">
+        <div class="weekItem" *ngFor="let item of noItem" ></div>
+        <div class="weekItem btn-weekItem" *ngFor="let item of Item; let i = index" (click)="getTempDate(i+1, monthInYear, year)">
+          <div [className]="(i == nowDay - 1) ? 'nowDay': 'thedate'">{{i+1}}</div>
+          <div class="event" *ngIf="checkExistEvent(i+1, monthInYear, year)">{{getNameEvent(i+1, monthInYear, year)}}</div>
+        </div>
+      </div>
+      <div class="add-Event">
+
+      </div>
+    </div>
+  </div>
+
+</ion-content>

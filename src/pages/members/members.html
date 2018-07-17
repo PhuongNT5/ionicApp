@@ -1,0 +1,30 @@
+<!--
+  Generated template for the MembersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>members</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list>
+  <ion-item  *ngFor="let mem of listMem" >
+    <img src ="../assets/imgs/boy.png">
+    {{mem.username}}
+    <button class="btn-user" small icon-right outline>
+      <img src="../assets/imgs/forward-arrow.png">
+    </button>
+    <ion-icon name="right"></ion-icon>
+  </ion-item>
+</ion-list>
+</ion-content>

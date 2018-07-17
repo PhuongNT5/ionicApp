@@ -1,0 +1,16 @@
+page-setcalendar {
+    .content{
+        background-color:#252525;
+    }
+    ion-list:first-child {
+        margin-top: 32px;
+      }
+      ion-list + ion-list {
+        margin-top: 0;
+      }
+    .item {
+        background-color: #424242;
+        color: #bdbdbd;
+    }
+
+}

@@ -1,0 +1,46 @@
+page-home {
+    .scroll-content{
+        padding:0px !important;
+    }
+    ion-item{
+        color:white;
+        background-size: cover;
+        height: 23.5%;
+        margin-bottom:3px;
+        opacity: 0.8;
+    }
+    ion-list {
+        height: 100%;
+    }
+    ion-label{
+        text-align: center;
+    }
+    .schedule{
+        background-image: url('../assets/imgs/lesson1.jpeg');
+    }
+    .makeLesson{
+        background-image: url('../assets/imgs/lesson3.jpg');
+    }
+    .note{
+        background-image: url('../assets/imgs/lesson5.jpg');
+    }
+    .class2{
+        background-image: url('../assets/imgs/lesson4.jpg');
+    }
+    span{
+        color: white;
+        font-size: 25px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .ion-item, .item-block, .item-inner {
+        border-bottom: none !important;
+        margin-bottom: 1px;
+    }
+    ion-img{
+        background:none;
+        float: right;
+        margin: 0 10%;
+        margin-top: 6px;
+    }
+}

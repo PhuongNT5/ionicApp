@@ -1,0 +1,32 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+     <ion-toolbar>
+    <button class="btn-singout" ion-button icon-left outline small (click)="signout()"> 
+      <ion-icon name="contact" ></ion-icon>
+          Sign out
+      </button>
+  </ion-toolbar>
+    <ion-list>
+      <button class="btn-item" menuClose ion-item *ngFor="let p of pages; let i = index" (click)="openPage(p)">
+          <img class="btn-img" src="../assets/imgs/home.png" *ngIf="i ==0">
+          <img class="btn-img" src="../assets/imgs/customer.png" *ngIf="i ==1">
+          <img class="btn-img" src="../assets/imgs/contact.png" *ngIf="i ==2">
+          <img class="btn-img" src="../assets/imgs/folder.png" *ngIf="i ==3">
+          <img class="btn-img" src="../assets/imgs/books.png" *ngIf="i ==4">
+
+        {{p.title}}
+      </button>
+
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

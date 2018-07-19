@@ -43,4 +43,13 @@ export class NoteProvider {
       })
     });
   }
+  deleteNote(noteId: string) {
+    return new Promise (resolve => {
+      this.http.delete(this.apiUrl +'/' + noteId).subscribe(res =>{
+        resolve(res);
+      }, err => {
+        console.log(err);
+      })
+    })
+  }
 }

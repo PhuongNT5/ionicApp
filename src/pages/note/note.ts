@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { NoteProvider } from '../../providers/note/note';
 /**
  * Generated class for the NotePage page.
@@ -15,7 +15,10 @@ import { NoteProvider } from '../../providers/note/note';
 })
 export class NotePage {
   listNote: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public noteProvider: NoteProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public noteProvider: NoteProvider,
+    public toastCtrl: ToastController
+  ) {
   }
 
   ionViewDidLoad() {
@@ -29,5 +32,21 @@ export class NotePage {
       console.log(err);
     })
 }
-
+  deleteNote(id) {
+    return this.noteProvider.deleteNote(id).then(note =>{
+      this.showToast("Deleted Note Success!");
+      this.getNotes();
+    }, (err) => {
+      this.showToast("Deleted Note Error!");
+      console.log(err);
+    })
+  }
+showToast(msg) {
+  let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'top',
+  });
+  toast.present();
+}
 }

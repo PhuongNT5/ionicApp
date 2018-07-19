@@ -19,11 +19,17 @@
 <ion-content padding>
     <ion-list>
         <ion-item  *ngFor="let note of listNote" >
-            <img src="../assets/imgs/notebook.png">
+           <div class="col-12">
+              <img src="../assets/imgs/notebook.png">
             {{note.title}}
-            <button class="btn-note" small icon-right outline>
-              <img src="../assets/imgs/forward-arrow.png">
-            </button>
+            <button class="btn-note" small icon-right outline title="Done" (click)="deleteNote(note._id)">
+                <img src="../assets/imgs/close.png">
+              </button>
+           </div>
+           <p> {{note.location}}</p>
+           <p> {{note.startDate}}</p>
+           <p> {{note.startTime}}</p>
+            
         </ion-item>
       </ion-list>
 </ion-content>

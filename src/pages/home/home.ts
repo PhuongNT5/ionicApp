@@ -27,13 +27,16 @@ export class HomePage {
 
   }
   schedulePage() {
-    this.navCtrl.push('SchedulePage', {}, { animate: true, direction: 'forward' })
+    this.navCtrl.push('SchedulePage', {}, { animate: true, direction: 'forward' });
   }
   setCalendarPage() {
-    this.navCtrl.push('SetcalendarPage', {}, { animate: true, direction: 'forward' })
+    this.navCtrl.push('SetcalendarPage', {}, { animate: true, direction: 'forward' });
   }
   setChatRoomPage() {
-    this.navCtrl.push('ChatroomPage', {}, { animate: true, direction: 'forward' })
+    this.navCtrl.push('ChatroomPage', {}, { animate: true, direction: 'forward' });
+  }
+  setNotePage() {
+    this.navCtrl.push('NotePage', {}, { animate: true, direction: 'forward' });
   }
   getLessons() {
     this.lessonProvider.getLessons().then(lessons => {
